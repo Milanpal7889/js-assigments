@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz</title>
+    <script src="https://kit.fontawesome.com/7a90690735.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+        }
+        .quiz{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 60%;
+        }
+        
+        .sub-heading1{
+            font-size: x-large;
+        }
+        .sub-heading1::after{
+            content: '';
+            margin-top: 1px;
+            display: block;
+            background-color: rgb(85, 180, 85);
+            height: 2px;
+        }
+        .sub-heading2{
+            color: rgb(126, 124, 124);
+            font-size: 11px;
+            text-align:right;
+        }
+
+        .button{
+            padding: 8px;
+            font-size: 10px;
+            margin: 2px;
+            margin-left: 0;
+            border-radius: 7px;
+            background-color: rgb(85, 180, 85);
+            color: aliceblue;
+        }
+        .main-heading{
+            display: flex;
+            flex-direction: column;
+        }
+        .sub-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .sub-heading3{
+            display: flex;
+            padding: 10px;
+            justify-content: center;
+        }
+        .subh-col{
+            padding: 12px;
+            background-color: rgb(126, 124, 124);
+            border-radius: 50%;
+            text-align: center;
+        }
+        .subh-subcol{
+            background-color: aliceblue;
+            border-radius: 50%;
+            padding: 8px;
+        }
+        .sub-heading4{
+            font-size: 25px;
+        }
+        .sub-heading5{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            font-size: 12px;
+        }
+        .sub-heading5 .subh-col2{
+            position: absolute;
+            right: 20%;
+        }
+        .questions{
+            margin-top: 3px;
+            margin-bottom: 3px;
+            border-radius: 4px;
+            padding: 3px;
+            font-size: 11px;
+            color: aliceblue;
+            background-color: rgb(126, 124, 124);            
+        }
+        .string{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #back{
+            background-color: rgb(236, 35, 35)
+        }
+        .images{
+            display: flex;
+            flex-direction: column;            
+            justify-content: center;
+        }
+        img{
+            padding: 12px;
+            width: 100px;
+        }
+        .showop{
+            margin: auto;
+        }
+
+        #im1, #im2, #im3, #im4, #im5, #im6, #im7, #im8, #im9{
+            margin-right: 10px;
+        }
+        #img1, #img2, #img3, #img4, #img5, #img6, #img7, #img8, #img9{
+            width: 100px;
+        }
+        .none{
+            display: none;
+        }
+        .display{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz">
+            <div class="main">
+                <div class="heading"> 
+                    <p class="sub-heading1" >Remember the number plates:</p>
+                    <p class="sub-heading2">100% correct</p> 
+                </div>
+                <div class="btn">
+                    <button class="button" id="back">BACK</button>
+                </div>
+            </div>
+            <div class="main-heading">
+                <div class="sub-container">
+                    <div class="sub-heading3">
+                        <div class="subh-col">
+                            <p class="subh-subcol">0/1</p>
+                        </div>
+                    </div>
+                    <div class="sub-heading4">
+                        <p>Remember the images</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="sub-heading5">
+                        <p class="subh-col1">Module: Remember the number plates</p>
+                        <p class="subh-col2"><i class="fafa fa-sharp fa-solid fa-stopwatch" style="color: #26a269;">10:00</i></p>
+                    </div>
+                    <div class="questions">
+                        <p>0/20</p>
+                    </div>
+                    <div class="string">
+                        <p id="stRing">images are shown below :</p>
+                    </div>
+                    <div class="images">
+                        <div class="showingBefore">
+                            <div class="sub-img">
+                                <img id="img1" src=""><img id="img2" src="">
+                            </div>
+                        </div>
+                        <div class="showop none">
+                            <img src="" id="findpair" alt="here it is">
+                        </div>
+                        <div class="showingAfter none">
+                            <div class="sub-img1">
+                                <input type="radio" name="im" value="0" class="im" id="im1"><label for="im1"><img id="img-1" src=""></label>
+                            </div>
+                            <div class="sub-img1">
+                                <input type="radio" name="im" value="1" class="im" id="im2"><label for="im2"><img  id="img-2" src=""></label>
+                            </div>
+                            <div class="sub-img1">
+                                <input type="radio" name="im" value="2" class="im" id="im3"><label for="im3"><img  id="img-3" src=""></label>
+                            </div>
+                            <div class="sub-img1">
+                                <input type="radio" name="im" value="3" class="im" id="im4"><label for="im4"><img id="img-4" src=""></label>
+                            </div>
+                            <div class="sub-img1">
+                                <input type="radio" name="im" value="4" class="im" id="im5"><label for="im5"><img id="img-5" src=""></label>
+                            </div>
+                            <div class="sub-img1">
+                                <input type="radio" name="im" value="5" class="im" id="im6"><label for="im6"><img id="img-6" src=""></label>
+                            </div>
+                        </div>  
+                    </div>
+                </div>    
+            </div>
+            <div>
+                <button id="btn" onclick="gameStart()" class="button">Start</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const button = document.getElementById("btn")
+        const imgRemhide = document.querySelector(".showingBefore")
+        const imgRemshow = document.querySelector(".showingAfter")
+        const showOp = document.querySelector(".showop")
+        let score = 0, error = 0, a = 1, randansArr   
+        let randomNumber = Math.floor(Math.random()*4)
+        let count = 0, randAns, randShow, randansArr1 = [], randansArr2 = [], randshowArr = []
+        const str = document.querySelector("#stRing")
+        const showTime = document.querySelector('.fafa')
+        let gameStatus = true
+        var time = 1000*60*10
+        var millis = 1000*60*10
+        var imgShow = [
+            document.querySelector("#img1"),
+            document.querySelector("#img2")
+        ]
+        var imgSel = [
+            document.querySelector("#img-1"),
+            document.querySelector("#img-2"),
+            document.querySelector("#img-3"),
+            document.querySelector("#img-4"),
+            document.querySelector("#img-5"),
+            document.querySelector("#img-6")
+        ]
+        var imgShowsource = [
+            "./img/n1.png",
+            "./img/n2.png",
+            "./img/n3.png",
+            "./img/n4.png",
+            "./img/n5.png",
+            "./img/n6.png",
+            "./img/n7.png",
+            "./img/n8.png",
+            "./img/n9.png",
+            "./img/n10.png",
+            "./img/n11.png",
+            "./img/n12.png",
+            "./img/n13.png",
+            "./img/n14.png",
+            "./img/n15.png",
+            "./img/n16.png",
+            "./img/n17.png",
+            "./img/n18.png",
+            "./img/n19.png",
+            "./img/n20.png"
+        ]
+        var imgSelsource = [
+            "./img/n1flip.png",
+            "./img/n2flip.png",
+            "./img/n3flip.png",
+            "./img/n4flip.png",
+            "./img/n5flip.png",
+            "./img/n6flip.png",
+            "./img/n7flip.png",
+            "./img/n8flip.png",
+            "./img/n9flip.png",
+            "./img/n10flip.png",
+            "./img/n11flip.png",
+            "./img/n12flip.png",
+            "./img/n13flip.png",
+            "./img/n14flip.png",
+            "./img/n15flip.png",
+            "./img/n16flip.png",
+            "./img/n17flip.png",
+            "./img/n18flip.png",
+            "./img/n19flip.png",
+            "./img/n20flip.png"
+        ]
+
+
+        function gameRun(){
+            if(gameStatus === true && time >= 0){
+                generateImagesAns()
+            }
+            else{
+                gameEnd()
+                console.log("game over 2")  
+            }
+        }
+
+
+        function getScore(){
+
+        }
+
+
+        function gameRem() {
+            if(gameStatus != false){
+                score = 0
+                imgRemhide.classList.add("none")
+                imgRemshow.classList.remove("none")
+                showOp.classList.remove("none")
+                button.textContent="Submit"
+                button.setAttribute("onclick","getAnswer()")
+                imageOptions()
+            }
+        }
+
+        function generateImagesAns(){
+            randomNumber = Math.floor(Math.random()*20)
+            imgShow[0].setAttribute("src",imgShowsource[randomNumber])
+            imgShow[1].setAttribute("src",imgSelsource[randomNumber])
+        }
+
+
+        function imageOptions(){
+            for (let i = 0; i <6; i++) {
+                randAns = Math.floor(Math.random() * 20)
+                while(randshowArr.includes(randAns) || randAns===randomNumber){
+                    randAns = Math.floor(Math.random() * 20)
+                }
+                randshowArr.push(randAns)
+                imgSel[i].setAttribute("src", imgSelsource[randAns])
+            }
+            imageAns()
+        }
+
+
+        function imageAns(){
+            randAns = Math.floor(Math.random() * 6)
+            imgSel[randAns].setAttribute("src", imgSelsource[randomNumber])
+            randansArr=randAns
+        }
+
+
+        function getAnswer(){
+            randansArr2=[]
+            button.textContent="Start"
+            button.setAttribute("onclick","()")
+            const anSwer=document.querySelectorAll('input[type="checkbox"]')
+            anSwer.forEach(function (checkbox){
+                if(checkbox.checked){
+                    randansArr2.push(parseInt(checkbox.value))
+                }
+                checkbox.checked=false
+            })
+            getScore() 
+            gameEnd()
+        }
+
+
+        function newInput(){
+            getAnswer()
+            gameRun()           
+        }
+
+
+        function gameEnd(){
+            gameStatus=false
+            score=0
+            clearInterval(intervalId)
+            imgRemhide.classList.add("none")
+            imgRemshow.classList.add("none")
+            showOp.classList.add("none")
+            button.textContent="Start"
+            button.setAttribute("onclick","gameStart()")
+            str.textContent="Your score is "+score
+            button.style.backgroundColor="rgb(85, 180, 85)"
+        }
+
+
+        function gameStart(){
+            gameStatus=true
+            intervalId = setInterval(timer, 1000)
+            button.textContent="remember"
+            button.setAttribute("onclick","gameRem()")
+            button.style.backgroundColor="rgb(236, 35, 35)"
+            imgRemhide.classList.remove("none")
+            score=0
+            time=1000*60*10
+            gameRun()
+        }
+
+
+        function timer(){
+            if(time>=0 & gameStatus!= false){            
+                var minutes = Math.floor(time / 60000)
+                var seconds = ((time % 60000) / 1000).toFixed(0)
+                time=time-1000
+                showTime.textContent= seconds == 60 ? (minutes+1) + ":00" : minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            }
+            else{
+                console.log("setTimeout")
+                gameStatus=false
+                clearInterval(intervalId)
+                gameEnd()
+            }            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz</title>
+    <script src="https://kit.fontawesome.com/7a90690735.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+        }
+        .quiz{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 60%;
+        }
+        .heading{
+            margin-top: 20px;
+        }
+        .sub-heading1{
+            font-size: x-large;
+        }
+        .sub-heading1::after{
+            content: '';
+            margin-top: 1px;
+            display: block;
+            background-color: rgb(85, 180, 85);
+            height: 2px;
+        }
+        .sub-heading2{
+            color: rgb(126, 124, 124);
+            font-size: 11px;
+            text-align:right;
+        }
+
+        .button, .numbers{
+            padding: 8px;
+            font-size: 10px;
+            margin: 2px;
+            margin-left: 0;
+            border-radius: 7px;
+            background-color: rgb(85, 180, 85);
+            color: aliceblue;
+        }
+        .main-heading{
+            display: flex;
+            flex-direction: column;
+        }
+        .sub-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .sub-heading3{
+            display: flex;
+            padding: 10px;
+            justify-content: center;
+        }
+        .subh-col{
+            padding: 12px;
+            background-color: rgb(126, 124, 124);
+            border-radius: 50%;
+            text-align: center;
+        }
+        .subh-subcol{
+            background-color: aliceblue;
+            border-radius: 50%;
+            padding: 8px;
+        }
+        .sub-heading4{
+            font-size: 25px;
+        }
+        .sub-heading5{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            font-size: 12px;
+        }
+        .sub-heading5 .subh-col1{
+        }
+        .sub-heading5 .subh-col2{
+            position: absolute;
+            right: 20%;
+        }
+        .questions{
+            margin-top: 3px;
+            margin-bottom: 3px;
+            border-radius: 4px;
+            padding: 3px;
+            font-size: 11px;
+            color: aliceblue;
+            background-color: rgb(126, 124, 124);            
+        }
+        .string{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .nums{
+            display: flex;
+            flex-direction: row;
+        }
+        .numbers{
+            width: 120px;
+            padding: 3px 10px;
+            font-size: 16px;
+            margin: 6px;
+            cursor: pointer;
+        }
+        #back{
+            background-color: rgb(236, 35, 35)
+        }
+        .input{
+            margin: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz">
+            <div class="main">
+                <div class="heading"> 
+                    <p class="sub-heading1" >Sequence Alphabets</p>
+                    <p class="sub-heading2">100% correct</p> 
+                </div>
+                <div class="btn">
+                    <button class="button" id="back">BACK</button>
+                </div>
+            </div>
+            <div class="main-heading">
+                <div class="sub-container">
+                    <div class="sub-heading3">
+                        <div class="subh-col">
+                            <p class="subh-subcol">0/1</p>
+                        </div>
+                    </div>
+                    <div class="sub-heading4">
+                        <p>Sequence Alphabets</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="sub-heading5">
+                        <p class="subh-col1">Module: Sequence Alphabets</p>
+                        <p class="subh-col2"><i class="fafa fa-sharp fa-solid fa-stopwatch" style="color: #26a269;">10:00</i></p>
+                    </div>
+                    <div class="questions">
+                     <p>0/30</p>
+                    </div>
+                    <div class="string">
+                        <p>Find the next Alphabets of following Sequence:</p>
+                        <p id="gameScore">Alphabets are shown here:</p>
+                        <div class="nums">  
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <button class="numbers" id="num1" onclick="getInput1()">1</button>
+                    </div>
+                    <div>
+                        <button class="numbers" id="num2" onclick="getInput2()">2</button>
+                    </div>
+                    <div>
+                        <button class="numbers" id="num3" onclick="getInput3()">3</button>
+                    </div>
+                </div>
+                <div>
+                    <button id="btn" onclick="gameStart()" class="button">Start</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var numBer=[
+            document.querySelector("#num1"),
+            document.querySelector("#num2"),
+            document.querySelector("#num3")
+        ]
+        var i=0,j=0
+        var time=1000*60*10
+        var gameStatus = true
+        const showTime = document.querySelector('.fafa')
+        var score
+        var btn = document.querySelector("#btn")
+        var gScore = document.querySelector("#gameScore")
+        var rGen = Math.floor(Math.random()*2)
+        var seQuence=[] ,seqGuess=[], alphaBets=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'] 
+        var timing=1 , randG
+        function gameScore(){
+            
+        }
+
+        function gameStart(){
+            gameStatus = true
+            if(timing==1){
+                setInterval(timer,1000)
+                timing=0
+            }
+            btn.textContent="Stop"
+            btn.style.background = "rgb(236, 35, 35)"
+            btn.setAttribute("onclick","gameEnd()")
+            gameRun()
+            score=0
+            time=1000*60*10
+        }
+
+        function gameRun(){
+            seQuence=[]
+            seqGuess=[]
+            numBer[0].innerHTML =''
+            numBer[1].innerHTML =''
+            numBer[2].innerHTML =''
+            sequence1()
+            numBer[0].innerHTML = alphaBets[Math.floor(Math.random()*26)]+","+alphaBets[Math.floor(Math.random()*26)]
+            numBer[1].innerHTML = alphaBets[Math.floor(Math.random()*26)]+","+alphaBets[Math.floor(Math.random()*26)]
+            numBer[2].innerHTML = alphaBets[Math.floor(Math.random()*26)]+","+alphaBets[Math.floor(Math.random()*26)]
+            gScore.textContent=seQuence
+            randG=Math.floor(Math.random()*3)
+            numBer[randG].textContent=seqGuess
+        }
+        function getInput1(){
+            if(randG==0){
+                score++
+                console.log(score)
+            }
+            gameRun()
+        }
+        function getInput2(){
+            if(randG==1){
+                score++
+                console.log(score)
+            }
+            gameRun()
+        }
+        function getInput3(){
+            if(randG==2){
+                score++
+                console.log(score)
+            }
+            gameRun()
+        }
+
+        function reset(){
+
+        }
+        function timer(){
+            if(time>=0 & gameStatus!= false){            
+                var minutes = Math.floor(time / 60000);
+                var seconds = ((time % 60000) / 1000).toFixed(0);
+                time=time-1000
+                showTime.textContent= seconds == 60 ? (minutes+1) + ":00" : minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            }
+            else{
+                console.log("setTimeout")
+                gameStatus=false
+            }            
+        }
+        function gameEnd(){
+            gameStatus=false
+            btn.textContent="Start "
+            btn.style.background = "rgb(85, 180, 85)"
+            btn.setAttribute("onclick","gameStart()")
+            gScore.textContent = "Your Score is "+score
+        }
+        function sequence1(){
+            j=0
+            num1=Math.floor(Math.random()*19)
+            num2=Math.floor(Math.random()*4)+1
+            for(let i=0;i<=5;i++){
+                seQuence.push(alphaBets[num1])
+                num1=num1+num2
+                while(num1>alphaBets.length){
+                    seQuence=[]
+                    num1=Math.floor(Math.random()*19)
+                    seQuence.push(alphaBets[num1])
+                    num1=num1+num2
+                    console.log(j+" is "+i)
+                    i=0
+                    j+=1
+                }
+                console.log(seQuence)
+            }
+            seqGuess.push(seQuence.slice(4))
+            seQuence.pop()
+            seQuence.pop()
+                // if(num2===1){
+                //     seQuence.push(num1)
+                //     num1=num1-numRand1                    
+                // }
+                // else if(num2===2){
+                //     seQuence.push(num1)
+                //     num1=num1+numRand1
+                // }
+                // else{
+                //     num1=Math.floor(Math.random()*11)
+                //     seQuence.push(num1*numRand2 )
+                // }
+
+                // if(num2===1){
+                //     seqGuess.push(num1)
+                //     num1=num1-numRand1                    
+                // }
+                // else if(num2===2){
+                //     seqGuess.push(num1)
+                //     num1=num1+numRand1
+                // }
+                // else{
+                //     num1=Math.floor(Math.random()*11)
+                //     if(!(num1*numRand2 in seQuence)){
+                //         seqGuess.push(num1*numRand2)
+                //     }
+                //     else{
+                //         num1=Math.floor(Math.random()*11)
+                //         seqGuess.push(num1*numRand2)
+                //     }
+                // }
+        }
+        
+    </script>
+</body>
+</html>

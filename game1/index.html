@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz</title>
+    <script src="https://kit.fontawesome.com/7a90690735.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+        }
+        .quiz{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 60%;
+        }
+        .heading{
+            margin-top: 20px;
+        }
+        .sub-heading1{
+            font-size: x-large;
+        }
+        .sub-heading1::after{
+            content: '';
+            margin-top: 1px;
+            display: block;
+            background-color: rgb(85, 180, 85);
+            height: 2px;
+        }
+        .sub-heading2{
+            color: rgb(126, 124, 124);
+            font-size: 11px;
+            text-align:right;
+        }
+
+        .button, .numbers{
+            padding: 8px;
+            font-size: 10px;
+            margin: 2px;
+            margin-left: 0;
+            border-radius: 7px;
+            background-color: rgb(85, 180, 85);
+            color: aliceblue;
+        }
+        .main-heading{
+            display: flex;
+            flex-direction: column;
+        }
+        .sub-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .sub-heading3{
+            display: flex;
+            padding: 10px;
+            justify-content: center;
+        }
+        .subh-col{
+            padding: 12px;
+            background-color: rgb(126, 124, 124);
+            border-radius: 50%;
+            text-align: center;
+        }
+        .subh-subcol{
+            background-color: aliceblue;
+            border-radius: 50%;
+            padding: 8px;
+        }
+        .sub-heading4{
+            font-size: 25px;
+        }
+        .sub-heading5{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            font-size: 12px;
+        }
+        .sub-heading5 .subh-col1{
+        }
+        .sub-heading5 .subh-col2{
+            position: absolute;
+            right: 20%;
+        }
+        .questions{
+            margin-top: 3px;
+            margin-bottom: 3px;
+            border-radius: 4px;
+            padding: 3px;
+            font-size: 11px;
+            color: aliceblue;
+            background-color: rgb(126, 124, 124);            
+        }
+        .string{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .nums{
+            display: flex;
+            flex-direction: row;
+        }
+        .numbers{
+            padding: 3px 10px;
+            font-size: 16px;
+            margin: 6px;
+            cursor: pointer;
+        }
+        #back{
+            background-color: rgb(236, 35, 35)
+        }
+        .input{
+            margin: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz">
+            <div class="main">
+                <div class="heading"> 
+                    <p class="sub-heading1" >Sort Numbers</p>
+                    <p class="sub-heading2">100% correct</p> 
+                </div>
+                <div class="btn">
+                    <button class="button" id="back">BACK</button>
+                </div>
+            </div>
+            <div class="main-heading">
+                <div class="sub-container">
+                    <div class="sub-heading3">
+                        <div class="subh-col">
+                            <p class="subh-subcol">0/1</p>
+                        </div>
+                    </div>
+                    <div class="sub-heading4">
+                        <p>Sort Numbers</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="sub-heading5">
+                        <p class="subh-col1">Module: Sort Numbers</p>
+                        <p class="subh-col2"><i class="fafa fa-sharp fa-solid fa-stopwatch" style="color: #26a269;">10:00</i></p>
+                    </div>
+                    <div class="questions">
+                     <p>0/30</p>
+                    </div>
+                    <div class="string">
+                        <p>Sort Numbers in descending order:</p>
+                        <p id="gameScore">Numbers are shown here:</p>
+                        <div class="nums">  
+                            <button class="numbers" id="num1" onclick="getInput1()">1</button>
+                            <button class="numbers" id="num2" onclick="getInput2()">2</button>
+                            <button class="numbers" id="num3" onclick="getInput3()">3</button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="inputEl1" class="label">1.</label>
+                        <input class="input" id="inputEl1" type="text" disabled>
+                    </div>
+                    <div>
+                        <label for="inputEl2" class="label">2.</label>
+                        <input class="input" id="inputEl2" type="text" disabled>
+                    </div>
+                    <div>
+                        <label for="inputEl3" class="label">3.</label>
+                        <input class="input" id="inputEl3" type="text" disabled>
+                    </div>
+                </div>
+                <div>
+                    <button onclick="getAnswer()" class="button" id="submit">Submit</button>
+                    <button id="btn" onclick="gameStart()" class="button">Start</button>
+                    <button id="reset" onclick="reset()" class="button">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var numBer=document.querySelector("#num1")
+        var numBer2=document.querySelector("#num2")
+        var numBer3=document.querySelector("#num3")
+        var inputEl=[
+            document.querySelector("#inputEl1"),
+            document.querySelector("#inputEl2"),
+            document.querySelector("#inputEl3")
+        ]
+        var numArr=[]
+        var num1,num2,num3       
+        var input1, input2, input3
+        var i=0
+        var time=1000*60*10
+        var ansArr=[]
+        var gameStatus = true
+        const showTime = document.querySelector('.fafa')
+        var newArr,score
+        var btn = document.querySelector("#btn")
+        var gScore = document.querySelector("#gameScore") 
+
+        function gameScore(){
+            if(ansArr[0] == newArr[0] && ansArr[1] == newArr[1] && ansArr[2] == newArr[2]){
+                score+=1
+                console.log("right")
+            }
+            else{
+                console.log("wrong")
+            }
+            ansArr=[]
+            numArr=[]
+            newArr=[]
+        }
+
+        function gameStart(){
+            gameStatus = true
+            setInterval(timer,1000)
+            inputEl[0].value=''
+            inputEl[1].value=''
+            inputEl[2].value=''
+            btn.textContent="Stop"
+            btn.style.background = "rgb(236, 35, 35)"
+            btn.setAttribute("onclick","gameEnd()")
+            gScore.textContent="Numbers are shown here:"
+            gameRun()
+            score=0
+            time=1000*60*10
+            clearTimeout(timer)
+        }
+
+        function gameRun(){
+            generateNumbers()
+        }
+
+        function generateNumbers(){
+            num1=(Math.random()*10).toFixed(3)
+            numArr.push(num1)
+            numBer.textContent=num1
+            num2=(Math.random()*10).toFixed(3)
+            numArr.push(num2)
+            numBer2.textContent=num2
+            num3=(Math.random()*10).toFixed(3)
+            numArr.push(num3)   
+            numBer3.textContent=num3
+            newArr=numArr.sort()
+            console.log(newArr)
+        }
+
+        function getInput1(){
+            if(i<=2){
+                inputEl[i].value=num1
+                numBer.removeAttribute("onclick")
+                i++
+                
+            }
+            else{
+                i=0
+                inputEl[i].value=num1
+            }
+        }
+        function getInput2(){
+            if(i<=2){
+                inputEl[i].value=num2
+                numBer2.removeAttribute("onclick")
+                i++
+                
+            }
+            else{
+                i=0
+                inputEl[i].value=num2
+            }
+        }
+        function getInput3(){
+            if(i<=2){
+                inputEl[i].value=num3
+                numBer3.removeAttribute("onclick")
+                i++
+            }
+            else{
+                i=0
+                inputEl[i].value=num3
+            }
+        }
+        
+        function getAnswer(){
+            ansArr.push(inputEl[0].value)
+            ansArr.push(inputEl[1].value)
+            ansArr.push(inputEl[2].value)
+            inputEl[0].value=''
+            inputEl[1].value=''
+            inputEl[2].value=''
+            numBer.setAttribute("onclick","getInput1()")
+            numBer2.setAttribute("onclick","getInput2()")
+            numBer3.setAttribute("onclick","getInput3()")
+            i=0
+            gameScore()
+            gameRun()
+        }
+
+        function reset(){
+            numBer.setAttribute("onclick","getInput1()")
+            numBer2.setAttribute("onclick","getInput2()")
+            numBer3.setAttribute("onclick","getInput3()")
+            inputEl[0].value=''
+            inputEl[1].value=''
+            inputEl[2].value=''
+            i=0
+        }
+        function timer(){
+            if(time>=0 & gameStatus!= false){            
+                var minutes = Math.floor(time / 60000);
+                var seconds = ((time % 60000) / 1000).toFixed(0);
+                time=time-1000
+                showTime.textContent= seconds == 60 ? (minutes+1) + ":00" : minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            }
+            else{
+                console.log("setTimeout")
+                gameStatus=false
+            }            
+        }
+        function gameEnd(){
+            gameStatus=false
+            btn.textContent="Start "
+            btn.style.background = "rgb(85, 180, 85)"
+            btn.setAttribute("onclick","gameStart()")
+            gScore.textContent = "Your Score is "+score
+        }
+
+    </script>
+</body>
+</html>

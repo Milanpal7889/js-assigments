@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz</title>
+    <script src="https://kit.fontawesome.com/7a90690735.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+        }
+        .quiz{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 60%;
+        }
+        .head{
+            margin-left: 0px;
+        }
+        .content, .example{
+            padding: 10px;
+        }
+        .solution::before{
+            content: '';
+            display: block;
+            width: 40%;
+            height: 3px;
+            background: #363636;
+            margin: 25px 0px 12px 0px;
+        }
+        .props{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            padding: 10px;
+        }
+        .sub-props1, .sub-props2, .button{
+            padding: 2px;
+            margin: 2px;
+            border-radius: 7px;
+            background-color: rgb(85, 180, 85);
+            color: aliceblue;
+            font-weight: 600;
+        }
+        .sub-props1{
+            width: 100px;
+        }
+        .sub-props2{
+            width: 150px;
+        }
+        .props div{
+            margin: auto;
+        }
+        .sub-heading1{
+            font-size: x-large;
+        }
+        .sub-heading1::after{
+            content: '';
+            margin-top: 1px;
+            display: block;
+            background-color: rgb(85, 180, 85);
+            height: 2px;
+        }
+        .sub-heading2{
+            color: rgb(126, 124, 124);
+            font-size: 11px;
+            text-align:right;
+        }
+
+        .button{
+            padding: 8px;
+            font-size: 10px;
+            margin: 2px;
+            margin-left: 0;
+            border-radius: 7px;
+            background-color: rgb(85, 180, 85);
+            color: aliceblue;
+        }
+        .main-heading{
+            display: flex;
+            flex-direction: column;
+        }
+        .sub-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .sub-heading3{
+            display: flex;
+            padding: 10px;
+            justify-content: center;
+        }
+        .subh-col{
+            padding: 12px;
+            background-color: rgb(126, 124, 124);
+            border-radius: 50%;
+            text-align: center;
+        }
+        .subh-subcol{
+            background-color: aliceblue;
+            border-radius: 50%;
+            padding: 8px;
+        }
+        .sub-heading4{
+            font-size: 25px;
+        }
+        .sub-heading5{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            font-size: 12px;
+        }
+        .sub-heading5 .subh-col1{
+        }
+        .sub-heading5 .subh-col2{
+            position: absolute;
+            right: 20%;
+        }
+        .questions{
+            margin-top: 3px;
+            margin-bottom: 3px;
+            border-radius: 4px;
+            padding: 3px;
+            font-size: 11px;
+            color: aliceblue;
+            background-color: rgb(126, 124, 124);            
+        }
+        .string{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #back{
+            background-color: rgb(236, 35, 35)
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz">
+            <div class="head">
+                <p class="content">Enter the answer as a number in the answer field.</p>
+                <strong class="content">Example:</strong>
+                <p class="content"><i>Count the p</i></p>
+                <p class="content"><i>rpqrqprpqrqrpqprq</i></p>
+                <div class="example">
+                    <p class="solution">Solution: <i>rpqrqprpqrqrpqprq</i> = 5</p>
+                </div>
+            </div>
+            <div class="props">
+                <div>
+                    <button class="sub-props1">CONTINUE</button>
+                </div>
+                <div>
+                    <button class="sub-props2"><i class="fa-regular fa-circle-check"> </i> EVALUATION </button>
+                </div>
+            </div>            
+            <div class="main">
+                <div class="heading"> 
+                    <p class="sub-heading1" >b d p q Test</p>
+                    <p class="sub-heading2">100% correct</p> 
+                </div>
+                <div class="btn">
+                    <button class="button" id="back">BACK</button>
+                </div>
+            </div>
+            <div class="main-heading">
+                <div class="sub-container">
+                    <div class="sub-heading3">
+                        <div class="subh-col">
+                            <p class="subh-subcol">0/1</p>
+                        </div>
+                    </div>
+                    <div class="sub-heading4">
+                        <p>b d p q Test</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="sub-heading5">
+                        <p class="subh-col1">Module: b d p q Test</p>
+                        <p class="subh-col2"><i class="fafa fa-sharp fa-solid fa-stopwatch" style="color: #26a269;">10:00</i></p>
+                    </div>
+                    <div class="questions">
+                     <p>0/20</p>
+                    </div>
+                    <div class="string">
+                        <p>Find all <strong>q</strong>:</p>
+                        <p id="stRing">String is shown here</p>
+                    </div>
+                </div>
+    
+                </div>
+            <div>
+                <input class="input" id="inputEl" type="text" >
+            </div>
+            <div>
+                <button onclick="newInput()" class="button" id="submit">Submit</button>
+                <button id="btn" onclick="gameStart()" class="button">Start</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const button= document.getElementById("btn")
+        const subMit= document.getElementById("submit")
+        let score = 0
+        let randomNumber=Math.floor(Math.random()*4)
+        let range= Math.floor(Math.random()*10)+7
+        let count=0
+        const str = document.querySelector("#stRing")
+        const input = document.querySelector("#inputEl")
+        const showTime = document.querySelector('.fafa')
+        let string = ['p','q','b','d']
+        let newString=''
+        let gameStatus=true
+        var time=1000*60*10
+        var millis=1000*60*10
+        function gameRun(){
+            if(gameStatus===true && time>=0){
+                generateString()
+                document.addEventListener("keypress",(event)=>{
+                    if(event.key==="Enter"){
+                    newInput()
+                    }
+                })
+                console.log("1st",count)
+            }
+            else{
+                gameEnd()
+                console.log("game over 2")  
+            }
+        }
+        function generateString(){
+            newString=''
+            str.textContent=''
+            range= Math.floor(Math.random()*10)+7
+            for(let i=0;i<range;i++){
+                randomNumber = Math.floor(Math.random()*4)
+                newString+=string[randomNumber]
+                if(string[randomNumber]=='q'){
+                    count+=1
+                }
+            }
+            str.textContent=newString
+        }
+        function getAnswer(){
+            if(input.value==count){
+                score+=1
+                console.log("right",count)
+            }
+            else{
+                console.log("wrong",count)
+            }
+            count=0
+            input.value=''   
+            }
+        function newInput(){
+            getAnswer()
+            gameRun()           
+        }
+        function gameEnd(){
+            gameStatus=false
+            button.textContent="Start"
+            button.setAttribute("onclick","gameStart()")
+            str.textContent="Your score is "+score
+            subMit.setAttribute("onclick"," ")
+            button.style.backgroundColor="rgb(85, 180, 85)"
+        }
+        function gameStart(){
+            gameStatus=true
+            setInterval(timer,1000)
+            subMit.setAttribute("onclick","newInput()")
+            button.textContent="Stop"
+            button.setAttribute("onclick","gameEnd()")
+            button.style.backgroundColor="rgb(236, 35, 35)"
+            score=0
+            time=1000*60*10
+            clearTimeout(timer)
+            gameRun()
+        }
+        function timer(){
+            if(time>=0 & gameStatus!= false){            
+                var minutes = Math.floor(time / 60000);
+                var seconds = ((time % 60000) / 1000).toFixed(0);
+                time=time-1000
+                console.log(time)
+                showTime.textContent= seconds == 60 ? (minutes+1) + ":00" : minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            }
+            else{
+                console.log("setTimeout")
+                gameStatus=false
+            }            
+        }
+    </script>
+</body>
+</html>
